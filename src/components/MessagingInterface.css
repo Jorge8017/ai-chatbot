@@ -1,0 +1,760 @@
+/* Toggle Button */
+.toggle-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.toggle-button.open {
+  background-color: #FCAF17;
+}
+
+.toggle-button:hover {
+  background-color: #45a049;
+}
+
+.messaging-interface {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-height: 450px;
+  position: relative;
+  width: 300px;
+}
+
+/* ... (previous styles remain the same) */
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: #1E1E1E;
+  color: #FFFFFF;
+}
+
+.header img {
+  height: 40px;
+}
+
+.header-buttons {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.header .close-btn,
+.header .menu-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.header .close-btn:hover,
+.header .menu-btn:hover {
+  transform: translateY(2px);
+}
+
+.header .close-btn .dropdown-icon,
+.header .menu-btn .three-dot-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.header .menu-btn {
+  margin-right: 10px;
+}
+
+.menu-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #FFFFFF;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.menu-dropdown button {
+  display: block;
+  width: 100%;
+  padding: 8px 10px;
+  text-align: left;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #333;
+  transition: background-color 0.3s ease;
+  font-size: 12px; /* Reduced font size */
+}
+
+.menu-dropdown button:hover {
+  background-color: #f5f5f5;
+}
+
+@media (prefers-color-scheme: dark) {
+  .menu-dropdown {
+    background-color: #333;
+    border-color: #555;
+  }
+
+  .menu-dropdown button {
+    color: #fff;
+  }
+
+  .menu-dropdown button:hover {
+    background-color: #444;
+  }
+}
+
+.messages {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  overflow-y: auto;
+  height: 291px;
+  padding: 20px;
+  overflow-x: hidden;
+}
+
+.message {
+  margin-bottom: 10px;
+  padding: 12px 10px;
+  border-radius: 20px;
+  position: relative;
+  max-width: 80%;
+  text-align: left;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  font-weight: 400;
+}
+
+.message.user {
+  background-color: #f1f1f1;
+  color: rgb(0, 0, 0);
+  align-self: flex-end;
+  border-top-right-radius: 0;
+}
+
+.time {
+  font-size: 9px;
+  color: #999;
+  text-align: right;
+}
+
+.message.bot .time {
+  color: #ffffff;
+}
+
+.input-area {
+  display: flex;
+  padding: 12px;
+  border-top: 1px solid #ddd;
+  position: relative;
+  bottom: 0;
+  background: #FFFFFF;
+}
+
+.input-area input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-right: 10px;
+  background: #FFFFFF;
+  color: #000000;
+}
+
+.input-area button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.input-area button i {
+  font-size: 20px;
+  color: #4caf50;
+}
+
+.message.bot {
+  color: rgb(255, 255, 255) !important;
+  align-self: flex-start;
+  border-top-left-radius: 0;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  max-width: 100%;
+}
+
+/* ... (rest of the existing styles) */
+
+@media (prefers-color-scheme: dark) {
+  .header {
+    background-color: #a09c9c;
+    color: #FFFFFF;
+  }
+
+  .message.user {
+    background-color: #555;
+    color: white;
+  }
+  
+
+  .input-area {
+    background: #333;
+  }
+  
+  .input-area input {
+    background: #555;
+    color: white;
+  }
+  
+  .input-area button i {
+    color: #6a9955;
+  }
+  
+}
+
+@media (prefers-color-scheme: light) {
+  .header {
+    background-color: #f1f1f1;
+  }
+
+  .message.user {
+    background-color: #f1f1f1;
+    color: rgb(0, 0, 0);
+    align-self: flex-end;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+  }
+  
+  .message.bot {
+ 
+    color: rgb(0, 0, 0) !important;
+    align-self: flex-start;
+    border-top-left-radius: 0;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    max-width: 100%;
+  }
+  
+  .input-area {
+    background: #FFFFFF;
+  }
+  
+  .input-area input {
+    background: #FFFFFF;
+    color: #000000;
+  }
+  
+  .input-area button i {
+    color: #4caf50;
+  }
+}
+
+.deal-suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 10px 0;
+  border-top: 1px solid #ddd;
+}
+
+.deal {
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 10px 10px 10px 0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.deal img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.deal-info {
+  padding: 10px;
+}
+
+.deal-info h4 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: bold;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.deal-info p {
+  margin: 5px 0;
+  font-size: 12px;
+  color: #666;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.deal-prices {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.price {
+  color: #4caf50;
+  font-weight: bold;
+}
+
+.old-price {
+  text-decoration: line-through;
+  color: #999;
+}
+
+@media (prefers-color-scheme: dark) {
+  .deal-suggestions {
+    border-color: #444;
+  }
+
+  .deal {
+    border-color: #444;
+  }
+
+  .deal-info p {
+    color: #bbb;
+  }
+
+  .old-price {
+    color: #777;
+  }
+}
+
+/* Loading and Error Messages */
+.loading {
+  margin: 10px;
+  padding: 10px;
+  text-align: center;
+  color: #666;
+}
+
+.error {
+  margin: 10px;
+  padding: 10px;
+  text-align: center;
+  color: red;
+}
+
+.messages .message.user {
+  background-color: #f1f1f1;
+  color: #000000;
+  align-self: flex-end;
+  border-top-right-radius: 0;
+}
+
+.messages .message.assistant {
+  background-color: #3B99C9;
+  color: #FFFFFF;
+  align-self: flex-start;
+  border-top-left-radius: 0;
+}
+
+/* Ensure these styles are not being overridden in dark mode */
+@media (prefers-color-scheme: dark) {
+  .messages .message.user {
+    background-color: #555;
+    color: #FFFFFF;
+  }
+  
+  .messages .message.assistant {
+    background-color: #3B99C9;
+    color: #FFFFFF;
+  }
+}
+/* Deal card styles */
+.deal {
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 10px 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #FFFFFF;
+}
+
+.deal img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.deal-info {
+  padding: 10px;
+}
+
+.deal-info h4 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: bold;
+  color: #000000;
+}
+
+.deal-prices {
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.price {
+  font-size: 18px;
+  font-weight: bold;
+  color: #55B948;
+}
+
+.old-price {
+  font-size: 14px;
+  text-decoration: line-through;
+  color: #999;
+  margin-left: 10px;
+}
+
+/* Dark mode styles */
+@media (prefers-color-scheme: dark) {
+  .deal {
+    background-color: #FFFFFF;
+  }
+
+  .deal-info h4 {
+    color: #000000;
+  }
+
+  .price {
+    color: #55B948;
+  }
+
+  .old-price {
+    color: #999;
+  }
+}
+
+/* Other styles omitted for brevity */
+
+.loading {
+  margin: 10px;
+  padding: 10px;
+  text-align: center;
+  color: #666;
+}
+
+.loading img {
+  width: 50px;
+  height: 50px;
+}
+
+/* Add these new styles at the end of your existing CSS file */
+
+.messaging-interface {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-height: 450px;
+  position: relative;
+  width: 300px;
+}
+
+.messages {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 10px;
+}
+
+.input-area {
+  border-top: 1px solid #ddd;
+}
+
+@media (prefers-color-scheme: dark) {
+  .messaging-interface {
+    background-color: #1e1e1e;
+    border-color: #444;
+  }
+
+  .header {
+    background-color: #888;
+  }
+
+  .messages .message.user {
+    background-color: #3a3a3a;
+    color: #f0f0f0;
+  }
+
+  .messages .message.assistant {
+    background-color: #3B99C9;
+    color: #FFFFFF;
+  }
+
+  .input-area {
+    background-color: #2a2a2a;
+    border-top-color: #444;
+  }
+
+  .input-area input {
+    background-color: #3a3a3a;
+    color: #f0f0f0;
+    border-color: #555;
+  }
+
+  .input-area button i {
+    color: #6a9955;
+  }
+
+  .menu-dropdown {
+    background-color: #2a2a2a;
+    border-color: #444;
+  }
+
+  .menu-dropdown button {
+    color: #f0f0f0;
+  }
+
+  .menu-dropdown button:hover {
+    background-color: #3a3a3a;
+  }
+}
+
+/* Add these styles to your existing MessagingInterface.css file */
+
+.email-button {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  color: #3B99C9;
+}
+
+.email-button:hover {
+  color: #55B948;
+}
+
+.email-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.email-modal input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.email-modal button {
+  padding: 10px 20px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.email-modal button:first-of-type {
+  background-color: #3B99C9;
+  color: white;
+}
+
+.email-modal button:last-of-type {
+  background-color: #f0f0f0;
+}
+
+@media (prefers-color-scheme: dark) {
+  .email-modal {
+    background-color: #2a2a2a;
+    color: #f0f0f0;
+  }
+
+  .email-modal input {
+    background-color: #3a3a3a;
+    color: #f0f0f0;
+    border-color: #555;
+  }
+
+  .email-modal button:last-of-type {
+    background-color: #3a3a3a;
+    color: #f0f0f0;
+  }
+}
+/* Add these styles to your existing MessagingInterface.css file */
+
+.deal {
+  position: relative;
+}
+
+.email-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(255, 255, 255, 0.8);
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+.email-icon:hover {
+  background: rgba(255, 255, 255, 1);
+}
+
+.email-icon img {
+  width: 20px;
+  height: 20px;
+}
+
+/* Email form container */
+.email-form {
+  display: flex;
+  padding: 8px;
+  background-color: #f0f0f0;
+  border-top: 1px solid #ddd;
+  align-items: center;
+  gap: 8px; /* Consistent spacing between elements */
+}
+
+/* Email input field */
+.email-form input[type="email"] {
+  flex: 1;
+  padding: 6px 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 12px;
+  min-width: 0; /* Allows input to shrink if needed */
+}
+
+/* Button styles */
+.email-form button {
+  padding: 6px 10px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  font-size: 11px;
+  white-space: nowrap;
+  min-width: 70px; /* Ensures buttons have a minimum width */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 28px; /* Fixed height for consistency */
+}
+
+.email-form button:last-child {
+  background-color: #f44336;
+}
+
+.email-form button:hover {
+  opacity: 0.8;
+}
+
+/* Dark mode styles */
+@media (prefers-color-scheme: dark) {
+  .email-form {
+    background-color: #2a2a2a;
+    border-top-color: #444;
+  }
+
+  .email-form input[type="email"] {
+    background-color: #3a3a3a;
+    border-color: #555;
+    color: #f0f0f0;
+  }
+
+  .email-form button {
+    background-color: #55B948;
+  }
+
+  .email-form button:last-child {
+    background-color: #d32f2f;
+  }
+}
+
+/* Add this to your existing MessagingInterface.css file */
+
+.contact-info {
+  margin-top: 10px;
+}
+
+.contact-info p {
+  margin: 5px 0;
+}
+
+.contact-info a {
+  color: #3B99C9;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.contact-info a:hover {
+  color: #55B948;
+  text-decoration: underline;
+}
+
+@media (prefers-color-scheme: dark) {
+  .contact-info a {
+    color: #55B948;
+  }
+
+  .contact-info a:hover {
+    color: #3B99C9;
+  }
+}
