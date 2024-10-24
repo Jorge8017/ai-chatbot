@@ -1,13 +1,13 @@
 const express = require("express");
 const axios = require("axios");
 const cors = require("cors");
-require('dotenv').config(); // For environment variables
+require('dotenv').config(); 
 
 const app = express();
 app.use(express.json());
 app.use(cors());
 
-const apiKey = process.env.SENDGRID_API_KEY; // Store this in a .env file
+const apiKey = process.env.SENDGRID_API_KEY; 
 
 app.post("/api/send-deal-email", async (req, res) => {
   const { email, deal } = req.body;
@@ -53,7 +53,7 @@ app.post("/api/send-deal-email", async (req, res) => {
   }
 });
 
-const PORT = process.env.PORT || 3001; // Use a different port than your React app
+const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
