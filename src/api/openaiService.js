@@ -1,6 +1,5 @@
 import axios from 'axios';
 
-// OpenAI API key stored in environment variables
 const API_KEY = process.env.API_KEY;
 
 const WooCommerceAPI = axios.create({
@@ -17,7 +16,6 @@ const openaiAPI = axios.create({
 
 export const sendMessage = async (message, previousMessages = []) => {
   try {
-    // First, use GPT to determine if the user is asking for deals
     const dealAnalysis = await analyzeDealQuery(message);
 
     if (dealAnalysis.isDealQuery) {
@@ -31,7 +29,6 @@ export const sendMessage = async (message, previousMessages = []) => {
       };
     }
 
-    // If not asking for deals, proceed with the regular conversation
     const messages = [
       { role: 'system', content: 'You are a helpful assistant for Daddy\'s Deals, a South African e-commerce platform. Provide friendly and informative responses about deals and products.' },
       ...previousMessages,
@@ -66,7 +63,7 @@ async function analyzeDealQuery(message) {
         Consider various ways users might ask about deals, including indirect questions or statements expressing interest in savings.` },
         { role: 'user', content: message }
       ],
-      temperature: 0.3, // Slightly higher temperature for more nuanced analysis
+      temperature: 0.3, 
     });
 
     const result = JSON.parse(response.data.choices[0].message.content);
@@ -77,7 +74,7 @@ async function analyzeDealQuery(message) {
     };
   } catch (error) {
     console.error('Error in analyzeDealQuery:', error);
-    return { isDealQuery: false, category: null, location: null }; // Default to false if there's an error
+    return { isDealQuery: false, category: null, location: null }; 
   }
 }
 
@@ -92,7 +89,6 @@ async function fetchDealsFromWooCommerce(tags = '') {
   }
 }
 
-// Function to save conversation history
 export const saveConversationHistory = async (messages) => {
   try {
     localStorage.setItem('ddChatHistory', JSON.stringify(messages));
@@ -101,7 +97,6 @@ export const saveConversationHistory = async (messages) => {
   }
 };
 
-// Function to get conversation history
 export const getConversationHistory = async () => {
   try {
     const history = localStorage.getItem('ddChatHistory');
